@@ -26,6 +26,8 @@ namespace OpenFluentMail
     {
         public welcomePage()
         {
+            TextBlock welcome = new TextBlock();
+            welcome.Text = "Your email is about to get more modern!";
             this.InitializeComponent();
         }
     }

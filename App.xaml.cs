@@ -43,8 +43,7 @@ namespace OpenFluentMail
         
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            launchWindow.LaunchWelcomeWindow();
-            launchWindow.OpenPage(new Window(), "Test", typeof(loginPage), null);
+            launchWindow.OpenPage(new Window(), "Welcome to OpenFluentMail", typeof(welcomePage), null);
         }
 
         
