@@ -26,6 +26,7 @@ namespace OpenFluentMail
         public MainWindow()
         {
             this.InitializeComponent();
+            Title = "Test";
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e)
