@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "OpenFluentMail (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "OpenFluentMail (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
