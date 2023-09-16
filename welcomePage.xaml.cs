@@ -27,6 +27,19 @@ namespace OpenFluentMail
     /// </summary>
     public sealed partial class welcomePage : Page
     {
+        public List<Tuple<string, string, string, string, string, string>> EmailProviders { get;  } = new List<Tuple<string, string, string, string,string,string>>()
+        {
+            //Create Tuples for most commonly used WebMail Services in the format of (Service Name, IMAP IP, IMAP Port, SMTP IP, SMTP Port, Logo Path)
+            new Tuple<string, string, string, string, string, string>("Gmail", "imap.gmail.com", "993", "smtp.gmail.com", "587", "Assets/gmail.png"),
+            new Tuple<string, string, string, string, string, string>("Outlook", "imap-mail.outlook.com", "993", "smtp-mail.outlook.com", "587", "Assets/outlook.png"),
+            new Tuple<string, string, string, string, string, string>("Yahoo", "imap.mail.yahoo.com", "993", "smtp.mail.yahoo.com", "587", "Assets/yahoo.png"),
+            new Tuple<string, string, string, string, string, string>("iCloud", "imap.mail.me.com", "993", "smtp.mail.me.com", "587", "Assets/icloud.png"),
+            new Tuple<string, string, string, string, string, string>("AOL", "imap.aol.com", "993", "smtp.aol.com", "587", "Assets/aol.png"),
+            new Tuple<string, string, string, string, string, string>("Zoho", "imap.zoho.com", "993", "smtp.zoho.com", "587", "Assets/zoho.png"),
+
+        };
+        
+
         public welcomePage()
         {
             this.InitializeComponent();
@@ -35,5 +48,42 @@ namespace OpenFluentMail
 
             
         }
+        void Submit(object sender, RoutedEventArgs e)
+        {
+            var test = EmailProviderBox.SelectionBoxItem;
+            String testString = test.ToString();
+            testString = testString.Replace("(", "");
+            testString = testString.Replace(")", "");
+            Array emailProviderArray = testString.Split(",");
+            String userEmail = IMAPUsername.Text;
+            String userPassword = IMAPPassword.Password;
+            //TODO : Implement IMAP and SMTP Connection and Login
+            //Add User Information to JSON File if Login is Successful, Hash Password
+            var obj = new
+            {
+                activelogins = new[]
+                {
+                    new
+                    {
+                        email = userEmail,
+                        password = userPassword,
+                        imap = new
+                        {
+                            ip = emailProviderArray.GetValue(1),
+                            port = emailProviderArray.GetValue(2)
+                        },
+                        smtp = new
+                        {
+                            ip = emailProviderArray.GetValue(3),
+                            port = emailProviderArray.GetValue(4)
+                        }
+                    }
+                }
+            };
+            var json = System.Text.Json.JsonSerializer.Serialize(obj);
+            //Write JSON to File in Documents
+            File.WriteAllText(@"C:\Users\Public\Documents\OpenFluentMail\login.json", json);
+        }
+
     }
 }
