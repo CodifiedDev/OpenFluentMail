@@ -9,8 +9,40 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid x:Name="mainGrid">
-        <Button>Test</Button>
+    <Canvas
+        x:Name="MainCanvas"
+        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+        Height="900"
+        Width="750"
+        >
+        <TextBlock
+            x:Name="WelcomeText"
+            Text="Welcome to OpenFluentMail"
+            Style="{StaticResource TitleTextBlockStyle}"
+            Canvas.Left="20"
+            Canvas.Top="10"
+            />
+        <Button
+            x:Name="MicrosoftSignIn"
+            Content="Sign In with Microsoft"
+            Style="{StaticResource AccentButtonStyle}"
+            Canvas.Left="130"
+            Canvas.Top="75"
+            Width="500"
+            />
+        <Rectangle 
+            Height="1"
+            Width="500"
+            Fill="{ThemeResource SystemAltHighColor}"
+            Canvas.Left="130"
+            Canvas.Top="125"
+            ></Rectangle>
+        <TextBlock
+            Text="Alternatively, Sign in with IMAP"
+            Style="{StaticResource SubtitleTextBlockStyle}"
+            Canvas.Left="20"
+            Canvas.Top="150"
+            />
 
-    </Grid>
+    </Canvas>
 </Page>

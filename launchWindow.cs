@@ -32,6 +32,7 @@ namespace OpenFluentMail
             if (frame == null)
             {
                 Frame newframe = new Frame();
+                window.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, 1920, 1080));
                 window.Content = newframe;
                 window.Title = title;
                 window.Activate();
@@ -40,6 +41,7 @@ namespace OpenFluentMail
             else
             {
                 window.Content = frame;
+                window.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, 1920, 1080));
                 window.Title = title;
                 window.Activate();
                 frame.Navigate(pagename, null, new EntranceNavigationTransitionInfo());

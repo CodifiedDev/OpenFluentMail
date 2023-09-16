@@ -9,10 +9,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Microsoft.UI;
 using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml.Shapes;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,9 +29,11 @@ namespace OpenFluentMail
     {
         public welcomePage()
         {
-            TextBlock welcome = new TextBlock();
-            welcome.Text = "Your email is about to get more modern!";
             this.InitializeComponent();
+            MainCanvas.Translation += new Vector3(0, 0, 32);
+            
+
+            
         }
     }
 }
