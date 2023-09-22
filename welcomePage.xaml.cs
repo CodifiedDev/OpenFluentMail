@@ -82,7 +82,13 @@ namespace OpenFluentMail
             };
             var json = System.Text.Json.JsonSerializer.Serialize(obj);
             //Write JSON to File in Documents
-            File.WriteAllText(@"C:\Users\Public\Documents\OpenFluentMail\login.json", json);
+
+            //Launch emailView
+            Window  viewWindow = App.MainWindow;
+           
+            launchWindow.OpenPage(viewWindow, "OpenFluentMail", typeof(emailView), null);
+            
+
         }
 
     }

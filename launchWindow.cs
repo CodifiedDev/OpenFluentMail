@@ -47,5 +47,6 @@ namespace OpenFluentMail
                 frame.Navigate(pagename, null, new EntranceNavigationTransitionInfo());
             }
         }
+
     }
 }
