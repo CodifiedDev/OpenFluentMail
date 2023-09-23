@@ -49,5 +49,22 @@ namespace OpenFluentMail
             newaccountItem.Icon = new SymbolIcon(Symbol.Mail);
             return newaccountItem;
         }
+
+        private void MailNav_OnSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.IsSettingsSelected)
+            {
+                mainView.Navigate(typeof(settings));
+            }
+            else
+            {
+                NavigationViewItem selectedItem = (NavigationViewItem)args.SelectedItem;
+                //if (selectedItem.Tag.ToString() == "1")
+                //{
+                //mainView.Navigate(typeof(mailViewPage));
+                //}
+                mainView.Navigate(typeof(mailViewPage));
+            }
         }
+    }
     }

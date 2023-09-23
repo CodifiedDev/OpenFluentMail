@@ -36,6 +36,7 @@ namespace OpenFluentMail
             new Tuple<string, string, string, string, string, string>("iCloud", "imap.mail.me.com", "993", "smtp.mail.me.com", "587", "Assets/icloud.png"),
             new Tuple<string, string, string, string, string, string>("AOL", "imap.aol.com", "993", "smtp.aol.com", "587", "Assets/aol.png"),
             new Tuple<string, string, string, string, string, string>("Zoho", "imap.zoho.com", "993", "smtp.zoho.com", "587", "Assets/zoho.png"),
+            new Tuple<string, string, string, string, string, string>("Custom", "127.0.0.1", "993", "127.0.0.1", "587", "Assets/custom.png"),
 
         };
         

@@ -11,9 +11,11 @@
 
     <NavigationView x:Name="mailNav"
                     PaneDisplayMode="LeftCompact"
-                    IsBackButtonVisible="Collapsed">
+                    IsBackButtonVisible="Collapsed"
+                    SelectedItem=""
+                    SelectionChanged="MailNav_OnSelectionChanged">
         <NavigationView.MenuItems>
-            <NavigationViewItem Content="Combined Inbox" Icon="Home" ToolTipService.ToolTip="Home" Tag="SamplePage1"/>
+            <NavigationViewItem Content="Combined Inbox" Icon="Home" ToolTipService.ToolTip="Home" Tag="SamplePage1" Name="home"/>
             <NavigationViewItem Content="Accounts" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2" SelectsOnInvoked="False" x:Name="accountViewItem">
                 <NavigationViewItem.MenuItems>
                     <NavigationViewItem Content="Mail" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>

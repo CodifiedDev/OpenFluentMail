@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <Page
     x:Class="OpenFluentMail.mailViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -6,17 +7,83 @@
     xmlns:local="using:OpenFluentMail"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:contacts="using:Windows.ApplicationModel.Contacts"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <SplitView IsPaneOpen="True"  PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+<Page.Resources>
+        <DataTemplate x:Key="mailItemTemplate" x:DataType="local:mailItems">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- <Ellipse x:Name="Ellipse"
+                         Grid.RowSpan="2"
+                         Width ="32"
+                         Height="32"
+                         Margin="6"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/> -->
+                <PersonPicture x:Name="Ellipse"
+                               Grid.RowSpan="2"
+                               Width ="32"
+                               Height="32"
+                               Margin="6"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               DisplayName="{x:Bind MainUsername}"/>
+                <TextBlock Grid.Column="1"
+                           Text="{x:Bind Subject}"
+                           x:Phase="1"
+                           Style="{ThemeResource BaseTextBlockStyle}"
+                           Margin="12,6,0,0"/>
+                <TextBlock  Grid.Column="1"
+                            Grid.Row="1"
+                            Text="{x:Bind MainUsername}"
+                            x:Phase="2"
+                            Style="{ThemeResource BodyTextBlockStyle}"
+                            Margin="12,0,0,6"/>
+                <!-- Assign an invisable variable of value x:Bind -->
+                <TextBlock x:Name="mailID"
+                           Text="{x:Bind EmailID}"
+                           Visibility="Collapsed"/>
+            </Grid>
+        </DataTemplate>
+</Page.Resources>
+    <SplitView IsPaneOpen="True" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" DisplayMode="Inline">
         <SplitView.Pane>
-            <ListView x:Name="mailItems"></ListView>
+            <NavigationView x:Name="mailist" Width="640" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" IsTabStop="True" PaneDisplayMode="Top">
+                <NavigationView.MenuItems>
+                    <NavigationViewItem Icon="Refresh" Content="Refresh" SelectsOnInvoked="False" Tag="refresh" Tapped="UIElement_OnTapped"/>
+                </NavigationView.MenuItems>
+                <ListView x:Name="mailItems" SelectionMode="Single" ItemTemplate="{StaticResource mailItemTemplate}"/>
+            </NavigationView>
+            
         </SplitView.Pane>
         <SplitView.Content>
-            <Canvas x:Name="mailContent">
-                
-            </Canvas>
+            <NavigationView x:Name="mailContent" PaneDisplayMode="Top" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" IsTabStop="True">
+                <NavigationView.MenuItems>
+                    <NavigationViewItem Icon="MailReply" Content="Reply" SelectsOnInvoked="False">
+                        <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Icon="Mail" Content="Reply All"/>
+                        <NavigationViewItem Icon="Mail" Content="Forward"/>
+                        </NavigationViewItem.MenuItems>
+                    </NavigationViewItem>
+                    <NavigationViewItem Icon="MoveToFolder" Content="Move" SelectsOnInvoked="False">
+                        <NavigationViewItem.MenuItems>
+                            <NavigationViewItem Icon="Contact" Content="Archive"/>
+                            <NavigationViewItem Icon="Delete" Content="Delete"/>
+                            <NavigationViewItem Icon="Contact" Content="Junk"/>
+                            <NavigationViewItem Icon="MoveToFolder" Content="Move to"/>
+                        </NavigationViewItem.MenuItems>
+                    </NavigationViewItem>
+                </NavigationView.MenuItems>
+            </NavigationView>
         </SplitView.Content>
     </SplitView>
 </Page>

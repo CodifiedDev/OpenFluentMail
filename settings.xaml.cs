@@ -9,9 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Mail;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Xml.Linq;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -23,29 +21,11 @@ namespace OpenFluentMail
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class mailViewPage : Page
+    public sealed partial class settings : Page
     {
-        public List<mailItems> initialEmails;
-        public mailViewPage()
+        public settings()
         {
             this.InitializeComponent();
-            refreshlist();
-            
-        }
-
-        private void refreshlist()
-        {
-            mailItems.Items.Clear();
-            initialEmails = mailEvents.RefreshMail();
-            foreach (mailItems email in initialEmails)
-            {
-                mailItems.Items.Add(email);
-            }
-        }
-
-        private void UIElement_OnTapped(object sender, TappedRoutedEventArgs e)
-        {
-            refreshlist();
         }
     }
 }
