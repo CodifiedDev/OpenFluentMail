@@ -15,6 +15,7 @@
     <None Remove="emailView.xaml" />
     <None Remove="loginPage.xaml" />
     <None Remove="mailViewPage.xaml" />
+    <None Remove="receivedMailView.xaml" />
     <None Remove="settings.xaml" />
     <None Remove="welcomePage.xaml" />
   </ItemGroup>
@@ -50,6 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="receivedMailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="settings.xaml">

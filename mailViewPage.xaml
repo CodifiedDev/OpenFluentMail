@@ -60,30 +60,14 @@
             <NavigationView x:Name="mailist" Width="640" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" IsTabStop="True" PaneDisplayMode="Top">
                 <NavigationView.MenuItems>
                     <NavigationViewItem Icon="Refresh" Content="Refresh" SelectsOnInvoked="False" Tag="refresh" Tapped="UIElement_OnTapped"/>
+                    <NavigationViewItem Icon="Mail" Content="New Mail" SelectsOnInvoked="False" Tag="new_mail"/>
                 </NavigationView.MenuItems>
-                <ListView x:Name="mailItems" SelectionMode="Single" ItemTemplate="{StaticResource mailItemTemplate}"/>
+                <ListView x:Name="mailItems" SelectionMode="Single" ItemTemplate="{StaticResource mailItemTemplate}" SelectionChanged="MailItems_OnSelectionChanged"/>
             </NavigationView>
             
         </SplitView.Pane>
         <SplitView.Content>
-            <NavigationView x:Name="mailContent" PaneDisplayMode="Top" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" IsTabStop="True">
-                <NavigationView.MenuItems>
-                    <NavigationViewItem Icon="MailReply" Content="Reply" SelectsOnInvoked="False">
-                        <NavigationViewItem.MenuItems>
-                        <NavigationViewItem Icon="Mail" Content="Reply All"/>
-                        <NavigationViewItem Icon="Mail" Content="Forward"/>
-                        </NavigationViewItem.MenuItems>
-                    </NavigationViewItem>
-                    <NavigationViewItem Icon="MoveToFolder" Content="Move" SelectsOnInvoked="False">
-                        <NavigationViewItem.MenuItems>
-                            <NavigationViewItem Icon="Contact" Content="Archive"/>
-                            <NavigationViewItem Icon="Delete" Content="Delete"/>
-                            <NavigationViewItem Icon="Contact" Content="Junk"/>
-                            <NavigationViewItem Icon="MoveToFolder" Content="Move to"/>
-                        </NavigationViewItem.MenuItems>
-                    </NavigationViewItem>
-                </NavigationView.MenuItems>
-            </NavigationView>
+            <Frame x:Name="mailContentFrame"/>
         </SplitView.Content>
     </SplitView>
 </Page>
