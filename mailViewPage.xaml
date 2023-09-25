@@ -48,10 +48,6 @@
                             x:Phase="2"
                             Style="{ThemeResource BodyTextBlockStyle}"
                             Margin="12,0,0,6"/>
-                <!-- Assign an invisable variable of value x:Bind -->
-                <TextBlock x:Name="mailID"
-                           Text="{x:Bind EmailID}"
-                           Visibility="Collapsed"/>
             </Grid>
         </DataTemplate>
 </Page.Resources>
@@ -60,7 +56,7 @@
             <NavigationView x:Name="mailist" Width="640" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" IsTabStop="True" PaneDisplayMode="Top">
                 <NavigationView.MenuItems>
                     <NavigationViewItem Icon="Refresh" Content="Refresh" SelectsOnInvoked="False" Tag="refresh" Tapped="UIElement_OnTapped"/>
-                    <NavigationViewItem Icon="Mail" Content="New Mail" SelectsOnInvoked="False" Tag="new_mail"/>
+                    <NavigationViewItem Icon="Mail" Content="New Mail" SelectsOnInvoked="False" Tag="new_mail" Tapped="NewMail_Tapped"/>
                 </NavigationView.MenuItems>
                 <ListView x:Name="mailItems" SelectionMode="Single" ItemTemplate="{StaticResource mailItemTemplate}" SelectionChanged="MailItems_OnSelectionChanged"/>
             </NavigationView>

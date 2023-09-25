@@ -15,15 +15,14 @@
                     SelectedItem=""
                     SelectionChanged="MailNav_OnSelectionChanged">
         <NavigationView.MenuItems>
-            <NavigationViewItem Content="Combined Inbox" Icon="Home" ToolTipService.ToolTip="Home" Tag="SamplePage1" Name="home"/>
+            <NavigationViewItem Content="Combined Inbox" Icon="Home" ToolTipService.ToolTip="Home" Tag="0" Name="home"/>
             <NavigationViewItem Content="Accounts" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2" SelectsOnInvoked="False" x:Name="accountViewItem">
                 <NavigationViewItem.MenuItems>
-                    <NavigationViewItem Content="Mail" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
+                    
                 </NavigationViewItem.MenuItems>
             </NavigationViewItem>
         </NavigationView.MenuItems>
         <Frame x:Name="mainView">
-            <TextBlock Text="Hello World"/>
         </Frame>
                
     </NavigationView>

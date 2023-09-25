@@ -25,17 +25,8 @@
                 </NavigationViewItem.MenuItems>
             </NavigationViewItem>
         </NavigationView.MenuItems>
-        <TextBlock
-            x:Name="mailSubject"
-            HorizontalAlignment="Left"
-            Margin="10,10,0,0"
-            TextWrapping="Wrap"
-            Text="TextBlock"
-            VerticalAlignment="Top"
-            Height="50"
-            Width="400"
-            FontSize="30"
-            FontWeight="Bold"
-        />
+        <Canvas>
+
+        </Canvas>
     </NavigationView>
   </Page>

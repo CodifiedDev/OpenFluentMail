@@ -14,6 +14,7 @@ namespace OpenFluentMail
             //TODO: Add code to connect to IMAP server, receive mail, and add to list
             //Connects to IMAP server
             //Foreach email (Replace in range)
+            //TODO: Add code to check which mailbox to get info from
             List<mailItems> emails = new List<mailItems>();
             for (int i = 0; i < 10; i++)
             {

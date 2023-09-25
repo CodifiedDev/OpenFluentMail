@@ -25,10 +25,12 @@ namespace OpenFluentMail
     {
         
         int _mailId = mailViewPage.mailId;
+        List<mailItems> _initialEmails = mailViewPage.initialEmails;
         public receivedMailView()
         {
             this.InitializeComponent();
-            mailSubject.Text = _mailId.ToString();
+            
+            
             
         }
     }

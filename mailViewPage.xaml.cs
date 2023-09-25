@@ -25,7 +25,7 @@ namespace OpenFluentMail
     /// </summary>
     public sealed partial class mailViewPage : Page
     {
-        public List<mailItems> initialEmails;
+        public static List<mailItems> initialEmails;
         public static int mailId;
         public mailViewPage()
         {
@@ -43,6 +43,7 @@ namespace OpenFluentMail
             {
                 mailItems.Items.Add(email);
             }
+            mailContentFrame.ClearValue(Frame.ContentProperty);
             mailId = 0;
             
         }
@@ -51,10 +52,13 @@ namespace OpenFluentMail
         {
             refreshlist();
         }
-
+        private void NewMail_Tapped(object sender, TappedRoutedEventArgs args)
+        {
+            mailContentFrame.Navigate(typeof(newMailView));
+        }
         private void MailItems_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mailId = 2;
+            mailId = mailItems.SelectedIndex;
             mailContentFrame.Navigate(typeof(receivedMailView));
         }
     }

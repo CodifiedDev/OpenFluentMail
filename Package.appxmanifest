@@ -10,13 +10,13 @@
   <Identity
     Name="f3bb59e6-13f9-4632-8420-33b5cc67b837"
     Publisher="CN=hartf"
-    Version="1.0.0.0" />
+    Version="0.1.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="f3bb59e6-13f9-4632-8420-33b5cc67b837" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>OpenFluentMail</DisplayName>
-    <PublisherDisplayName>hartf</PublisherDisplayName>
+    <PublisherDisplayName>Ben Hartfiel</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -41,11 +41,14 @@
         Square44x44Logo="Assets\Square44x44Logo.png">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape"/></uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>
 
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
+    <uap:Capability Name="contacts"/>
   </Capabilities>
 </Package>

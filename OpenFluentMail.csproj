@@ -10,11 +10,13 @@
     <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
+    <DefaultLanguage>en-AU</DefaultLanguage>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="emailView.xaml" />
     <None Remove="loginPage.xaml" />
     <None Remove="mailViewPage.xaml" />
+    <None Remove="newMailView.xaml" />
     <None Remove="receivedMailView.xaml" />
     <None Remove="settings.xaml" />
     <None Remove="welcomePage.xaml" />
@@ -51,6 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="newMailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="receivedMailView.xaml">

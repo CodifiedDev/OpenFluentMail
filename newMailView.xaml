@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="OpenFluentMail.newMailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OpenFluentMail"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <NavigationView x:Name="mailContent" PaneDisplayMode="Top" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" IsTabStop="True">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Icon="Attach" Content="Attach" SelectsOnInvoked="False">
+            </NavigationViewItem>
+            <NavigationViewItem Icon="Delete" Content="Discard" SelectsOnInvoked="False">
+            </NavigationViewItem>
+        </NavigationView.MenuItems>
+        <NavigationView.FooterMenuItems>
+            <NavigationViewItem Icon="Send" Content="Send" SelectsOnInvoked="False">
+            </NavigationViewItem>
+        </NavigationView.FooterMenuItems>
+        <Canvas>
+            <TextBox x:Name="mailrecipients" PlaceholderText="To" Canvas.Left="20" Canvas.Top="10" Width="500"></TextBox>
+            <TextBox x:Name="mailSubject" PlaceholderText="Subject" Canvas.Left="20" Canvas.Top="70" Width="500"/>
+            <RichEditBox x:Name="mailBody" Canvas.Left="20" Canvas.Top="120" Height="500" Width="1500" FontSize="12"></RichEditBox>
+            <Button x:Name="browsecontacts" Content="Select from contacts" Width="Auto" Canvas.Top="10" Canvas.Left="550" Click="Browsecontacts_OnClick"></Button>
+            <ComboBox x:Name="Font" PlaceholderText="Change Font" SelectedValuePath="Item1" Canvas.Top="625" Canvas.Left="20"></ComboBox>
+            <NumberBox x:Name="fontSize" PlaceholderText="Font Size" Value="12" SpinButtonPlacementMode="Inline" SmallChange="4" Canvas.Top="625" Canvas.Left="160" Minimum="1" Maximum="72" ValueChanged="FontSize_OnValueChanged"></NumberBox>
+        </Canvas>
+    </NavigationView>
+</Page>

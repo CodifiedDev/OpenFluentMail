@@ -23,12 +23,14 @@ namespace OpenFluentMail
     /// </summary>
     public sealed partial class emailView : Page
     {
+        public static int accountid;
         public emailView()
         {
             this.InitializeComponent();
             NavigationViewItem newaccountItem = createAccountItem("Outlook", 1);
-            
+            NavigationViewItem newaccountItem2 = createAccountItem("Gmail", 2);
             accountViewItem.MenuItems.Add(newaccountItem);
+            accountViewItem.MenuItems.Add(newaccountItem2);
             SplitView mainSplitView = new SplitView();
             ListView emailList = new ListView();
             Canvas emailCanvas = new Canvas();
@@ -63,8 +65,11 @@ namespace OpenFluentMail
                 //{
                 //mainView.Navigate(typeof(mailViewPage));
                 //}
+                accountid = Convert.ToInt32(selectedItem.Tag);
                 mainView.Navigate(typeof(mailViewPage));
             }
         }
+
+       
     }
     }
