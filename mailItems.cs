@@ -16,6 +16,9 @@ namespace OpenFluentMail
         public string Timestamp { get; set; }
         public int EmailID { get; set; }
         public string MainUsername => Username[0];
+        public string MainEmailadress => Emailadress[0];
+        public string OtherRecipients => mailEvents.generateOtherRecipients(Username, Emailadress);
+
 
         public mailItems(string[] username, string subject, string body, string[] emailadress, string primaryImage, string timestamp,
             int emailID)

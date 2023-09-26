@@ -9,6 +9,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
@@ -29,12 +30,35 @@ namespace OpenFluentMail
         public receivedMailView()
         {
             this.InitializeComponent();
-            subject.Text = _initialEmails[_mailId].Subject;
-            sender.Text = _initialEmails[_mailId].MainUsername;
-            senderpic.DisplayName = _initialEmails[_mailId].MainUsername;
-            senderemailaddress.Text = _initialEmails[_mailId].Emailadress[0];
+            if (_mailId > -1)
+            {
+                subject.Text = _initialEmails[_mailId].Subject;
+                sender.Text = _initialEmails[_mailId].MainUsername;
+                senderpic.DisplayName = _initialEmails[_mailId].MainUsername;
+                senderemailaddress.Text = _initialEmails[_mailId].Emailadress[0];
+                otherRecipients.Text = _initialEmails[_mailId].OtherRecipients;
+                Run bodyText = new Run();
+                bodyText.Text = _initialEmails[_mailId].Body;
+                mailbody.Inlines.Add(bodyText);
+            }
+        }
+
+        private void DecreaseFontSize(object o, TappedRoutedEventArgs e)
+        {
+            if (overarchtextbody.FontSize - 4 <= 0)
+            {
+                
+            }
+            else
+            { 
+                overarchtextbody.FontSize -= 4;
+            }
             
-            
+        }
+
+        private void IncreaseFontSize(object o, TappedRoutedEventArgs e)
+        {
+            overarchtextbody.FontSize += 4;
         }
     }
 }
