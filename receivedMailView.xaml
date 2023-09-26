@@ -26,7 +26,11 @@
             </NavigationViewItem>
         </NavigationView.MenuItems>
         <Canvas>
-
+            <TextBlock x:Name="subject" Style="{StaticResource TitleLargeTextBlockStyle}" Canvas.Left="45" Canvas.Top="25"/>
+            <PersonPicture x:Name="senderpic" Canvas.Left="45" Canvas.Top="75" Height="32" Width="32"/>
+            <TextBlock x:Name="sender" Canvas.Left="85" Canvas.Top="75"/>
+            <TextBlock x:Name="senderemailaddress" Canvas.Left="85" Canvas.Top="95"></TextBlock>
+            <RichTextBlock x:Name="mailbody" Canvas.Left="45" Canvas.Top="125" Height="500" Width="500"/>
         </Canvas>
     </NavigationView>
   </Page>

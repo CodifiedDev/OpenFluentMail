@@ -29,7 +29,10 @@ namespace OpenFluentMail
         public receivedMailView()
         {
             this.InitializeComponent();
-            
+            subject.Text = _initialEmails[_mailId].Subject;
+            sender.Text = _initialEmails[_mailId].MainUsername;
+            senderpic.DisplayName = _initialEmails[_mailId].MainUsername;
+            senderemailaddress.Text = _initialEmails[_mailId].Emailadress[0];
             
             
         }

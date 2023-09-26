@@ -51,7 +51,7 @@
             </Grid>
         </DataTemplate>
 </Page.Resources>
-    <SplitView IsPaneOpen="True" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" DisplayMode="Inline">
+    <SplitView IsPaneOpen="True" PaneBackground="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" DisplayMode="Inline" x:Name="mainSplitView">
         <SplitView.Pane>
             <NavigationView x:Name="mailist" Width="640" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" IsTabStop="True" PaneDisplayMode="Top">
                 <NavigationView.MenuItems>
