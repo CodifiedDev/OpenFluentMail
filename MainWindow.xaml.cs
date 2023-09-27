@@ -23,15 +23,19 @@ namespace OpenFluentMail
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private static Window new_window = new Window();
         public MainWindow()
         {
             this.InitializeComponent();
-            Title = "Test";
+            
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+
+        public static Window m_window()
         {
-            myButton.Content = "Clicked";
+            Window window = new_window;
+            window.ExtendsContentIntoTitleBar = true;
+            return window;
         }
     }
 }

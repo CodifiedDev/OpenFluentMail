@@ -36,6 +36,7 @@ namespace OpenFluentMail
             this.InitializeComponent();
         }
         public static Window MainWindow = new Window();
+        
 
         /// <summary>
         /// Invoked when the application is launched.
@@ -44,7 +45,6 @@ namespace OpenFluentMail
         
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            
             launchWindow.OpenPage(MainWindow, "Welcome to OpenFluentMail", typeof(welcomePage), null);
 
         }
