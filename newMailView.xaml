@@ -24,7 +24,6 @@
             <TextBox x:Name="mailrecipients" PlaceholderText="To" Canvas.Left="20" Canvas.Top="10" Width="500"></TextBox>
             <TextBox x:Name="mailSubject" PlaceholderText="Subject" Canvas.Left="20" Canvas.Top="70" Width="500"/>
             <RichEditBox x:Name="mailBody" Canvas.Left="20" Canvas.Top="120" Height="500" Width="1500" FontSize="12"></RichEditBox>
-            <Button x:Name="browsecontacts" Content="Select from contacts" Width="Auto" Canvas.Top="10" Canvas.Left="550" Click="Browsecontacts_OnClick"></Button>
             <ComboBox x:Name="Font" PlaceholderText="Change Font" SelectedValuePath="Item1" Canvas.Top="625" Canvas.Left="20"></ComboBox>
             <NumberBox x:Name="fontSize" PlaceholderText="Font Size" Value="12" SpinButtonPlacementMode="Inline" SmallChange="4" Canvas.Top="625" Canvas.Left="160" Minimum="1" Maximum="72" ValueChanged="FontSize_OnValueChanged"></NumberBox>
         </Canvas>
