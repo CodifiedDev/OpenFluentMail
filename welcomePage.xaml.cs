@@ -13,6 +13,7 @@ using System.Numerics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using MailKit.Net.Imap;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Shapes;
@@ -39,22 +40,24 @@ namespace OpenFluentMail
             new Tuple<string, string, string, string, string, string>("Custom", "127.0.0.1", "993", "127.0.0.1", "587", "Assets/custom.png"),
 
         };
-        
+
+        public static ImapClient initalLoggedinClient;
 
         public welcomePage()
         {
             this.InitializeComponent();
             MainCanvas.Translation += new Vector3(0, 0, 32);
-            
 
             
         }
-        void Submit(object sender, RoutedEventArgs e)
+        async void Submit(object sender, RoutedEventArgs e)
         {
+            SignInProgress.IsActive = true;
             var test = EmailProviderBox.SelectionBoxItem;
             String testString = test.ToString();
             testString = testString.Replace("(", "");
             testString = testString.Replace(")", "");
+            testString = testString.Replace(" ", "");
             Array emailProviderArray = testString.Split(",");
             String userEmail = IMAPUsername.Text;
             String userPassword = IMAPPassword.Password;
@@ -83,11 +86,54 @@ namespace OpenFluentMail
             };
             var json = System.Text.Json.JsonSerializer.Serialize(obj);
             //Write JSON to File in Documents
-
+            string host = emailProviderArray.GetValue(1).ToString();
+            string port = emailProviderArray.GetValue(2).ToString();
+            port = "999";
+            int portint = int.Parse(port);
+            //For some reason portint is resulting in 0 no matter what, so authenticateClient now uses 993 no matter what, TODO: Fix this
+            
+            initalLoggedinClient = mailEvents.authenticateClient(host, portint, userEmail, userPassword);
+            
+            //initalLoggedinClient = mailEvents.authenticateClient("imap.gmail.com", 993, userEmail, userPassword);
+            if (initalLoggedinClient.IsConnected)
+            {
+                if (initalLoggedinClient.IsAuthenticated)
+                {
+                    //TODO : Add User Information to JSON File if Login is Successful, Hash Password
+                    //Write JSON to File in Documents
+                    //TODO : Launch emailView
+                    Window viewWindow = App.MainWindow;
+                    launchWindow.OpenPage(viewWindow, "OpenFluentMail", typeof(emailView), null);
+                }
+                else
+                {
+                    ContentDialog dialog = new ContentDialog
+                    {
+                        Title = "Login Error",
+                        Content = "Unable to login to server, please check your username and password and try again.",
+                        CloseButtonText = "Ok",
+                        XamlRoot = this.XamlRoot
+                    };
+                    SignInProgress.IsActive = false;
+                    var result = await dialog.ShowAsync();
+                }
+            }
+            else
+            {
+                ContentDialog dialog = new ContentDialog
+                {
+                    Title = "Connection Error",
+                    Content = "Unable to connect to server, please check your internet connection and try again.",
+                    CloseButtonText = "Ok",
+                    XamlRoot = this.XamlRoot
+                };
+                var result = await dialog.ShowAsync();
+                SignInProgress.IsActive = false;
+            }
+            
             //Launch emailView
-            Window  viewWindow = App.MainWindow;
-           
-            launchWindow.OpenPage(viewWindow, "OpenFluentMail", typeof(emailView), null);
+            //Window viewWindow = App.MainWindow;
+            //launchWindow.OpenPage(viewWindow, "OpenFluentMail", typeof(emailView), null);
             
 
         }

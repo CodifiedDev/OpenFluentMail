@@ -63,7 +63,14 @@
             Click="Submit"
             Style="{StaticResource AccentButtonStyle}"
             />
-
+        <ProgressRing
+            x:Name="SignInProgress"
+            Canvas.Left="300"
+            Canvas.Top="550"
+            Width="128"
+            Height="128"
+            IsActive="False"
+            />
     </Canvas>
 
 </Page>

@@ -37,13 +37,22 @@ namespace OpenFluentMail
                 senderpic.DisplayName = _initialEmails[_mailId].MainUsername;
                 senderemailaddress.Text = _initialEmails[_mailId].Emailadress[0];
                 otherRecipients.Text = _initialEmails[_mailId].OtherRecipients;
-                Run bodyText = new Run();
-                bodyText.Text = _initialEmails[_mailId].Body;
-                mailbody.Inlines.Add(bodyText);
+                //Run bodyText = new Run();
+                //bodyText.Text = _initialEmails[_mailId].Body;
+                //mailbody.Inlines.Add(bodyText);
+                setWebView();
+
             }
         }
 
-        private void DecreaseFontSize(object o, TappedRoutedEventArgs e)
+        private async void setWebView()
+        {
+            await mailBodyView.EnsureCoreWebView2Async();
+            
+            mailBodyView.NavigateToString(_initialEmails[_mailId].Body);
+        }
+
+        /* private void DecreaseFontSize(object o, TappedRoutedEventArgs e)
         {
             if (overarchtextbody.FontSize - 4 <= 0)
             {
@@ -59,6 +68,6 @@ namespace OpenFluentMail
         private void IncreaseFontSize(object o, TappedRoutedEventArgs e)
         {
             overarchtextbody.FontSize += 4;
-        }
-    }
+        } */
+    } 
 }

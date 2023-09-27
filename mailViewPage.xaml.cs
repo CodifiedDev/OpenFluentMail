@@ -38,7 +38,7 @@ namespace OpenFluentMail
         {
             mailContentFrame.ClearValue(Frame.ContentProperty);
             mailItems.Items.Clear();
-            initialEmails = mailEvents.RefreshMail();
+            initialEmails = mailEvents.RefreshMail(welcomePage.initalLoggedinClient);
             foreach (mailItems email in initialEmails)
             {
                 mailItems.Items.Add(email);

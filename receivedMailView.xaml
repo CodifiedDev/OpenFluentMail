@@ -24,12 +24,12 @@
                     <NavigationViewItem Icon="MoveToFolder" Content="Move to"/>
                 </NavigationViewItem.MenuItems>
             </NavigationViewItem>
-            <NavigationViewItem Icon="FontSize" Content="Font Size" SelectsOnInvoked="False">
+            <!--<NavigationViewItem Icon="FontSize" Content="Font Size" SelectsOnInvoked="False">
                 <NavigationViewItem.MenuItems>
                     <NavigationViewItem Icon="FontDecrease" Content="Smaller" SelectsOnInvoked="False" Tapped="DecreaseFontSize"/>
                     <NavigationViewItem Icon="FontIncrease" Content="Larger" SelectsOnInvoked="False" Tapped="IncreaseFontSize"/>
                 </NavigationViewItem.MenuItems>
-            </NavigationViewItem>
+            </NavigationViewItem> -->
         </NavigationView.MenuItems>
         <Canvas>
             <TextBlock x:Name="subject" Style="{StaticResource TitleLargeTextBlockStyle}" Canvas.Left="25" Canvas.Top="5"/>
@@ -38,9 +38,10 @@
             <TextBlock x:Name="senderemailaddress" Canvas.Left="82" Canvas.Top="85" Style="{StaticResource CaptionTextBlockStyle}"></TextBlock>
             <TextBlock x:Name="maildate" Canvas.Left="600" Canvas.Top="5" Style="{StaticResource CaptionTextBlockStyle}"/>
             <TextBlock x:Name="otherRecipients" Style="{StaticResource CaptionTextBlockStyle}" Canvas.Top="120" Canvas.Left="25"></TextBlock>
-            <RichTextBlock x:Name="overarchtextbody" Canvas.Top="145" Width="1500" TextWrapping="Wrap" Margin="25, 0, 25, 0" >
+            <!-- <RichTextBlock x:Name="overarchtextbody" Canvas.Top="145" Width="1500" TextWrapping="Wrap" Margin="25, 0, 25, 0" >
                     <Paragraph x:Name="mailbody"></Paragraph>
-            </RichTextBlock>
+            </RichTextBlock> -->
+            <WebView2 x:Name="mailBodyView" Canvas.Left="25" Canvas.Top="145" Width="1500" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="800"></WebView2>
         </Canvas>
     </NavigationView>
   </Page>
