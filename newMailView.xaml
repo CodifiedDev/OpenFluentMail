@@ -17,13 +17,14 @@
             </NavigationViewItem>
         </NavigationView.MenuItems>
         <NavigationView.FooterMenuItems>
-            <NavigationViewItem Icon="Send" Content="Send" SelectsOnInvoked="False">
+            <NavigationViewItem x:Name="Send"  Icon="Send" Content="Send" SelectsOnInvoked="False" Tapped="Send_OnTapped">
             </NavigationViewItem>
         </NavigationView.FooterMenuItems>
-        <Canvas>
+        <Canvas x:Name="writeOut">
             <TextBox x:Name="mailrecipients" PlaceholderText="To" Canvas.Left="20" Canvas.Top="10" Width="500"></TextBox>
             <TextBox x:Name="mailSubject" PlaceholderText="Subject" Canvas.Left="20" Canvas.Top="70" Width="500"/>
-            <RichEditBox x:Name="mailBody" Canvas.Left="20" Canvas.Top="120" Height="500" Width="1500" FontSize="12"></RichEditBox>
+            <!--<RichEditBox x:Name="mailBody" Canvas.Left="20" Canvas.Top="120" Height="500" Width="1500" FontSize="12"></RichEditBox> -->
+            <TextBox x:Name="mailBody" Canvas.Left="20" Canvas.Top="120" Height="500" Width="1500" TextWrapping="Wrap" AcceptsReturn="True" FontSize="12"></TextBox>
             <ComboBox x:Name="Font" PlaceholderText="Change Font" SelectedValuePath="Item1" Canvas.Top="625" Canvas.Left="20"></ComboBox>
             <NumberBox x:Name="fontSize" PlaceholderText="Font Size" Value="12" SpinButtonPlacementMode="Inline" SmallChange="4" Canvas.Top="625" Canvas.Left="160" Minimum="1" Maximum="72" ValueChanged="FontSize_OnValueChanged"></NumberBox>
         </Canvas>

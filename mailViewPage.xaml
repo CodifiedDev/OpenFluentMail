@@ -58,7 +58,11 @@
                     <NavigationViewItem Icon="Refresh" Content="Refresh" SelectsOnInvoked="False" Tag="refresh" Tapped="UIElement_OnTapped"/>
                     <NavigationViewItem Icon="Mail" Content="New Mail" SelectsOnInvoked="False" Tag="new_mail" Tapped="NewMail_Tapped"/>
                 </NavigationView.MenuItems>
-                <ListView x:Name="mailItems" SelectionMode="Single" ItemTemplate="{StaticResource mailItemTemplate}" SelectionChanged="MailItems_OnSelectionChanged"/>
+                <ListView x:Name="mailItems" SelectionMode="Single" ItemTemplate="{StaticResource mailItemTemplate}" SelectionChanged="MailItems_OnSelectionChanged">
+                    <ListView.Footer>
+                        <Button x:Name="loadMoreMail" Click="LoadMoreMail_OnClick" Content="Load More" HorizontalAlignment="Center" Margin="0,10"></Button>
+                    </ListView.Footer>
+                </ListView>
             </NavigationView>
             
         </SplitView.Pane>

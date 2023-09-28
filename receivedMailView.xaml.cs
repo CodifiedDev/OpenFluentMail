@@ -37,6 +37,7 @@ namespace OpenFluentMail
                 senderpic.DisplayName = _initialEmails[_mailId].MainUsername;
                 senderemailaddress.Text = _initialEmails[_mailId].Emailadress[0];
                 otherRecipients.Text = _initialEmails[_mailId].OtherRecipients;
+                maildate.Text = _initialEmails[_mailId].Timestamp;
                 //Run bodyText = new Run();
                 //bodyText.Text = _initialEmails[_mailId].Body;
                 //mailbody.Inlines.Add(bodyText);

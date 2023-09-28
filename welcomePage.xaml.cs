@@ -14,6 +14,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using MailKit.Net.Imap;
+using MailKit.Net.Smtp;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Shapes;
@@ -42,6 +43,8 @@ namespace OpenFluentMail
         };
 
         public static ImapClient initalLoggedinClient;
+        public static SmtpClient InitalLoggiedinSmtpClient;
+        public static string userEmailAddress;
 
         public welcomePage()
         {
@@ -90,6 +93,8 @@ namespace OpenFluentMail
             string port = emailProviderArray.GetValue(2).ToString();
             port = "999";
             int portint = int.Parse(port);
+            bool continueLogin = true;
+            userEmailAddress = userEmail;
             //For some reason portint is resulting in 0 no matter what, so authenticateClient now uses 993 no matter what, TODO: Fix this
             
             initalLoggedinClient = mailEvents.authenticateClient(host, portint, userEmail, userPassword);
@@ -102,20 +107,21 @@ namespace OpenFluentMail
                     //TODO : Add User Information to JSON File if Login is Successful, Hash Password
                     //Write JSON to File in Documents
                     //TODO : Launch emailView
-                    Window viewWindow = App.MainWindow;
-                    launchWindow.OpenPage(viewWindow, "OpenFluentMail", typeof(emailView), null);
+                    //Window viewWindow = App.MainWindow;
+                    //launchWindow.OpenPage(viewWindow, "OpenFluentMail", typeof(emailView), null);
                 }
                 else
                 {
                     ContentDialog dialog = new ContentDialog
                     {
                         Title = "Login Error",
-                        Content = "Unable to login to server, please check your username and password and try again.",
+                        Content = "Unable to login to IMAP server, please check your username and password and try again.",
                         CloseButtonText = "Ok",
                         XamlRoot = this.XamlRoot
                     };
                     SignInProgress.IsActive = false;
                     var result = await dialog.ShowAsync();
+                    continueLogin = false;
                 }
             }
             else
@@ -123,18 +129,56 @@ namespace OpenFluentMail
                 ContentDialog dialog = new ContentDialog
                 {
                     Title = "Connection Error",
-                    Content = "Unable to connect to server, please check your internet connection and try again.",
+                    Content = "Unable to connect to IMAP server, please check your internet connection and try again.",
                     CloseButtonText = "Ok",
                     XamlRoot = this.XamlRoot
                 };
                 var result = await dialog.ShowAsync();
                 SignInProgress.IsActive = false;
+                continueLogin = false;
+            }
+
+            InitalLoggiedinSmtpClient = mailEvents.AuthentiSmtpClient(emailProviderArray.GetValue(3).ToString(), 0, userEmail, userPassword);
+            if (continueLogin == true)
+            {
+                if (InitalLoggiedinSmtpClient.IsConnected)
+                {
+                    if (InitalLoggiedinSmtpClient.IsAuthenticated)
+                    {
+                        Window viewWindow = App.MainWindow;
+                        launchWindow.OpenPage(viewWindow, "OpenFluentMail", typeof(emailView), null);
+                    }
+                    else
+                    {
+                        ContentDialog dialog = new ContentDialog
+                        {
+                            Title = "Login Error",
+                            Content = "Unable to login to SMTP server, please check your username and password and try again.",
+                            CloseButtonText = "Ok",
+                            XamlRoot = this.XamlRoot
+                        };
+                        SignInProgress.IsActive = false;
+                        var result = await dialog.ShowAsync();
+                    }
+                }
+                else
+                {
+                    ContentDialog dialog = new ContentDialog
+                    {
+                        Title = "Connection Error",
+                        Content = "Unable to connect to SMTP server, please check your internet connection and try again.",
+                        CloseButtonText = "Ok",
+                        XamlRoot = this.XamlRoot
+                    };
+                    var result = await dialog.ShowAsync();
+                    SignInProgress.IsActive = false;
+                }
             }
             
             //Launch emailView
             //Window viewWindow = App.MainWindow;
             //launchWindow.OpenPage(viewWindow, "OpenFluentMail", typeof(emailView), null);
-            
+
 
         }
 

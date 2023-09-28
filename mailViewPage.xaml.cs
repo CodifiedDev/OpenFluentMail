@@ -61,5 +61,22 @@ namespace OpenFluentMail
             mailId = mailItems.SelectedIndex;
             mailContentFrame.Navigate(typeof(receivedMailView));
         }
+
+        private void LoadMoreMail_OnClick(object sender, RoutedEventArgs e)
+        {
+            initialEmails.AddRange(mailEvents.inboxLoadMore(welcomePage.initalLoggedinClient, initialEmails.Count));
+            foreach (mailItems email in initialEmails)
+            {
+                if (mailItems.Items.Contains(email))
+                {
+                    continue;
+                }
+                else
+                {
+                    mailItems.Items.Add(email);
+                }
+                
+            }
+        }
     }
 }

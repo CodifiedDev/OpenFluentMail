@@ -36,7 +36,7 @@
             <PersonPicture x:Name="senderpic" Canvas.Left="25" Canvas.Top="60" Height="48" Width="48"/>
             <TextBlock x:Name="sender" Canvas.Left="80" Canvas.Top="60" Style="{StaticResource SubtitleTextBlockStyle}"/>
             <TextBlock x:Name="senderemailaddress" Canvas.Left="82" Canvas.Top="85" Style="{StaticResource CaptionTextBlockStyle}"></TextBlock>
-            <TextBlock x:Name="maildate" Canvas.Left="600" Canvas.Top="5" Style="{StaticResource CaptionTextBlockStyle}"/>
+            <TextBlock x:Name="maildate" Canvas.Left="1000" Canvas.Top="25" Style="{StaticResource CaptionTextBlockStyle}"/>
             <TextBlock x:Name="otherRecipients" Style="{StaticResource CaptionTextBlockStyle}" Canvas.Top="120" Canvas.Left="25"></TextBlock>
             <!-- <RichTextBlock x:Name="overarchtextbody" Canvas.Top="145" Width="1500" TextWrapping="Wrap" Margin="25, 0, 25, 0" >
                     <Paragraph x:Name="mailbody"></Paragraph>
